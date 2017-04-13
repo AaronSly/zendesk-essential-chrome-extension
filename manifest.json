@@ -1,0 +1,28 @@
+{
+   "author": "Aaron Sly",   
+   "content_scripts": [ {
+      "js" : [ "assets/js/jquery-3.2.1.min.js", "assets/js/content.js" ],
+      "css" : ["assets/css/main.css"],
+      "matches" : ["https://*.zendesk.com/agent/*"],
+      "run_at": "document_end"
+   } ],   
+   "description": "Highlight Zendesk apps and custom fields.",
+   "icons": {
+      "128": "assets/img/icon.png",
+      "16": "assets/img/icon.png",
+      "48": "assets/img/icon.png"
+   },
+   "manifest_version": 2,
+   "name": "Zendesk Essential Highlights",
+   "page_action": {
+      "default_icon": {
+         "16": "assets/img/icon.png",
+         "24": "assets/img/icon.png",
+         "32": "assets/img/icon.png"
+      },
+      "name": "Zendesk Essential Highlights"
+   },   
+   "short_name": "Zendesk Essential Highlights",
+
+   "version": "0.0.1"
+}

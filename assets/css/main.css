@@ -1,0 +1,122 @@
+div.jGrowl div.jGrowl-notification { 
+    width: 400px;
+    font-size:15px;
+    background-color: #D6FFDF;
+    animation: pulse 2s linear infinite, nudge 2s linear infinite;
+}
+div.jGrowl div.jGrowl-notification.ui-state-alert a {
+    border-bottom: 2px solid #FFA914;
+}
+div.jGrowl div.jGrowl-notification .jGrowl-close {
+    opacity:1;
+}
+@keyframes pulse { 
+    0%, 100% { background-color: #FFC6C2; }
+    50% { background-color: #FFECEB; }
+}
+@keyframes alert {
+    0%, 100% { background-color: #FF0000; }
+    50% { background-color: #FFC2C2; }
+}
+@keyframes nudge {
+    0%, 50%, 60%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(-1%, 0); }
+    55% {transform: translate(0.5%,0) }
+}
+.custom_field_36281429 label,
+.custom_field_37202905 label,
+.custom_field_36996065 label,
+.custom_field_34776389 label,
+.custom_field_33516049 label {
+    font-size:14px;
+    color:#000!important;
+    font-weight:600;
+}
+
+.custom_field_36281429 .zd-combo-selectmenu {
+    background: none;
+    padding: 10px 10px;
+    border-radius: 3px;
+}
+.custom_field_36281429 label{
+    padding: 0 10px;
+}
+.custom_field_36281429{
+    background-color: rgba(0, 102, 0, 0.5);
+    border-radius: 3px;
+}
+.custom_field_37202905 .zd-combo-selectmenu {
+    background: none;
+    padding: 10px 10px;
+    border-radius: 3px;
+}
+.custom_field_37202905 label {
+    padding: 0 10px;
+}
+.custom_field_37202905 {
+    background-color: rgba(255, 165, 0, 0.5);
+    border-radius: 3px;
+}
+.custom_field_36996065 .zd-combo-selectmenu {
+    background: none;
+    padding: 10px 10px;
+    border-radius: 3px;
+}
+.custom_field_36996065 label {
+    padding: 0 10px;
+}
+.custom_field_36996065 {
+    background-color: rgba(255, 0, 0, 0.5);
+    border-radius: 3px;
+}
+.app_view.btn.apps_system_top_bar.app-30460 {
+    margin-top:-6px!important;
+}
+.btn_apps.app_view.btn.apps_system_top_bar.app-30460 {
+    background-color:#FFA500!important;
+    border: 0!important;
+    padding: 0px!important;
+    height: 40px!important;
+    width: 75px!important;
+}
+.app_view.btn.apps_top_bar.app-30460 {
+    margin-top:-6px!important;
+}
+.btn_apps.app_view.btn.apps_top_bar.app-30460 {
+    background-color:#FFA500!important;
+    border: 0!important;
+    padding: 0px!important;
+    height: 40px!important;
+    width: 75px!important;
+}
+#branding_header #user_options .btn-toolbar .btn img {
+    height: 20px!important;
+    width: 20px!important;
+    padding: 12px!important;
+}
+.channels-control .channel-header {
+    padding: 0px!important;
+    height: 40px!important;
+    width: 75px!important;
+    margin-top:-6px!important;
+}
+.svg-voice-icon-default svg {
+    height:20px!important;
+    width:20px!important;
+    margin-top: 10px!important;
+}
+.voice.channel-svg.off{
+    height: 40px!important;
+    border-radius: 4px;
+    animation: alert 2s linear infinite
+}
+.filter_tickets td.subject {
+    max-width:400px !important;
+}
+td.34776389 {
+    max-width:85px;
+}
+#jGrowl {
+    z-index:10!important;
+    top:55px!important;
+}
