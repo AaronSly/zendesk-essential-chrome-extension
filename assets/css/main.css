@@ -1,4 +1,14 @@
 /* Main CSS Styles */
+
+/* PRIORITY HIGHLIGHTS DEFAULTS*/
+
+.low-ticket {background-color:#F3F6F7!important}
+.normal-ticket {background-color:#DEF7DE!important}
+.high-ticket {background-color:#FFF5D6!important}
+.urgent-ticket {background-color:#FCEFEE!important;}
+.filter_tickets:not(.deleted) .regular:hover td{background-color:#f3f3f3!important}
+
+/* POP UP AND GENERAL STYLE CHANGES */
 div.jGrowl div.jGrowl-notification { 
     width: 400px;
     font-size:15px;
