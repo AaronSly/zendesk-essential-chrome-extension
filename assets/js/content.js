@@ -5,7 +5,7 @@
 	*option to select what fields show and hide per ticket group - options.html
 */
 
-function hideCustomField(){
+var hideCustomField = function(){
 
 		var openTickSidebars = $('#main_panes .ember-view.workspace .ticket .ticket-sidebar');
 		//text to match searchText
@@ -67,7 +67,7 @@ function addStatusClass(priority) {
 };
 
 // Check local data options and call addStatusClass() as needed.
-function highlights() { 	
+var highlights = function() { 	
  	chrome.storage.local.get('lowPriority', function (data) {
 		if (data.lowPriority == true) {
 			addStatusClass('Low')
@@ -93,14 +93,36 @@ function highlights() {
 	});
  }
 
+ // Inject custom CSS styles into the page
+function customCss() {
+	// Check and create custom CSS from textarea
+	chrome.storage.local.get('customCss', function (css){		
+		if (css.customCss !== '') {			
+			var StrippedString = css.customCss.replace(/(<([^>]+)>)/ig,"");
+			var addCss = '<style type="text/css">' + StrippedString + '</style>';
+			$("head").append(addCss);
+		};
+	});
+
+	// Check and create custom CSS from textarea
+	chrome.storage.local.get('customCssUrl', function (cssUrl){		
+		if (cssUrl.customCssUrl !== '') {
+			var addCssUrl = '<link rel="stylesheet "type="text/css" href="'+cssUrl.customCssUrl+'">';
+			$("head").append(addCssUrl);
+		};
+	});
+}
+
+
 // Make it so...
 $(document).ready(function() {
-    setTimeout(hideCustomField(), 1700);
-    setTimeout(highlights, 1700);
+    setTimeout(hideCustomField, 1700);
+    setTimeout(highlights, 1600);
+    customCss();
 }), $('*').click(function() {
-    setTimeout(hideCustomField(), 1300);
+    setTimeout(hideCustomField, 1300);
     setTimeout(highlights, 1300);
 }), $(window).focus(function() {
-    setTimeout(hideCustomField(), 1500);
+    setTimeout(hideCustomField, 1500);
     setTimeout(highlights, 1500);
 });

@@ -18,6 +18,7 @@
       "page" : "options.html",
       "chrome_style" : true
    },
+   "background": { "scripts": ["assets/js/jquery-3.2.1.min.js","assets/js/background.js"] },
    "page_action": {
       "default_icon": {
          "16": "assets/img/icon.png",
@@ -27,9 +28,7 @@
       "name": "Zendesk Essential Highlights"
    },   
    "short_name": "Zendesk Essential Highlights",
-   "permissions": [
-      "storage"
-   ],
+   "permissions": ["storage","notifications"],
 
    "version": "0.0.1"
 }

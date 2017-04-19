@@ -2,33 +2,60 @@
 <html>
 	<head>
 		<title>Zendesk Essential Extension Options</title>
+		<script src="/assets/js/jquery-3.2.1.min.js"></script>
 		<style>
 			html {min-width: 500px;}
+			textarea {width:100%;}
+			table {margin:10px 0;}
+			.custom-css-wrap p, .custom-css-link p {margin-bottom:0px;}
+			.cbox {padding-left:10px;}			
+			.section-wrap {border-bottom: solid lightgray 1px;padding-bottom: 5px;}
+			.submit-section {margin-top:5px;}
+			#status {text-align:center; font-size:15px;}
 		</style>	
 	</head>
 	<body>
 	
-	
-	<h3>Enable ticket status highlighting by Priority.</h3>
-	<label>
-	  <input type="checkbox" id="low">
-	  Low Priority
-	</label>
-	<label>
-	  <input type="checkbox" id="normal">
-	  Normal Priority
-	</label>
-	<label>
-	  <input type="checkbox" id="high">
-	  High Priority
-	</label>
-	<label>
-	  <input type="checkbox" id="urgent">
-	  Urgent Priority
-	</label>
+	<div class="highlight-wrapper section-wrap">
+		<h2>Enable Ticket Status Highlighting by Priority.</h2>
+		<table>
+			<tbody>
+				<tr>
+					<td>Low Priority:</td>
+					<td class="cbox"><input type="checkbox" id="low"></td>
+				</tr>
+				<tr>
+					<td>Normal Priority:</td>
+					<td class="cbox"><input type="checkbox" id="normal"></td>
+				</tr>
+				<tr>
+					<td>High Priority:</td>
+					<td class="cbox"><input type="checkbox" id="high"></td>
+				</tr>
+				<tr>
+					<td>Urgent Priority:</td>
+					<td class="cbox"><input type="checkbox" id="urgent"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
-	<div id="status"></div>
-	<button id="save">Save</button>
+	<div class="custom-css-wrap section-wrap">
+		<h2>Custom Styles</h2>		  
+	    <div class="custom-css-ta">
+	    	<p>Add your custom CSS styles here.</p>
+	    	<textarea id="cssInput" rows="4"></textarea>    	
+	    </div>
+	    <div class="custom-css-link">
+	    	<p>Or add a link to a custom CSS stylesheet here.</p>
+	    	<input type="text" id="cssUrlInput" style="width:100%;">
+	    </div>
+	</div>
+
+	<div class="submit-section">		
+		<button id="save">Save</button>
+		<div id="status"></div>
+	</div>
 
 	<script src="assets/js/options.js"></script>
 	</body>
