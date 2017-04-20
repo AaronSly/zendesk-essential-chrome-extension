@@ -111,7 +111,20 @@ function customCss() {
 			$("head").append(addCssUrl);
 		};
 	});
-}
+};
+
+
+	function onlineChecks() {
+		// turn all this section into a function to reuse
+		chrome.runtime.sendMessage({status: "offline", talkTitle: "TALK TITLE", talkMessage: "TALK MESSAGE"}, function(response) {
+			  console.log(response.responseStatus);
+			});
+
+		// get this working!!
+		if($("#voice-control").hasClass("off") === true) {
+			
+		}
+	}
 
 
 // Make it so...
@@ -119,6 +132,7 @@ $(document).ready(function() {
     setTimeout(hideCustomField, 1700);
     setTimeout(highlights, 1600);
     customCss();
+    onlineChecks();
 }), $('*').click(function() {
     setTimeout(hideCustomField, 1300);
     setTimeout(highlights, 1300);
