@@ -113,18 +113,24 @@ function customCss() {
 	});
 };
 
-
-	function onlineChecks() {
+function notify(id, status, title, message){
 		// turn all this section into a function to reuse
-		chrome.runtime.sendMessage({status: "offline", talkTitle: "TALK TITLE", talkMessage: "TALK MESSAGE"}, function(response) {
+		chrome.runtime.sendMessage({notifyId: id, status: status, notifyTitle: title, notifyMessage: message}, function(response) {
 			  console.log(response.responseStatus);
 			});
+	};
 
-		// get this working!!
-		if($("#voice-control").hasClass("off") === true) {
-			
-		}
+var onlinechecks = function() {
+	// Talk Checks
+	if($("#voice-control").hasClass("off") === true) {
+		notify('id1','offline','TALK TITLE IN FUNCTION', 'TALK MESSAGE IN FUNCTION');		
 	}
+
+	// Chat checks
+	notify('id2','offline','TALK TITLE IN FUNCTION 2', 'TALK MESSAGE IN FUNCTION 2');
+	// Run the checks every 30 secs
+	//setTimeout(onlinechecks, 30000);
+}
 
 
 // Make it so...
@@ -132,10 +138,11 @@ $(document).ready(function() {
     setTimeout(hideCustomField, 1700);
     setTimeout(highlights, 1600);
     customCss();
-    onlineChecks();
+    setTimeout(onlinechecks, 2000);
 }), $('*').click(function() {
     setTimeout(hideCustomField, 1300);
     setTimeout(highlights, 1300);
+    setTimeout(onlinechecks, 500);// for debugging only remove in build.
 }), $(window).focus(function() {
     setTimeout(hideCustomField, 1500);
     setTimeout(highlights, 1500);

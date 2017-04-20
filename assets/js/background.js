@@ -1,18 +1,16 @@
 
-chrome.runtime.onMessage.addListener(function(message,sender,sendResponse){
+chrome.runtime.onMessage.addListener(function(notification,sender,sendResponse){
 	
-	sendResponse({responseStatus: "Talk Status: "+message.status});
+	sendResponse({responseStatus: "Talk Status: "+notification.status});
 var opt = {
   type: "basic",
-  title: message.talkTitle,
-  message: message.talkMessage,
+  title: notification.notifyTitle,
+  message: notification.notifyMessage,
   iconUrl: "../assets/img/icon.png",
   requireInteraction: true
 };
 
-chrome.notifications.create('id1', opt);
-chrome.notifications.create('id2', opt);
-chrome.notifications.create('id3', opt);
+chrome.notifications.create(notification.notifyId, opt);
 	
 });
 
