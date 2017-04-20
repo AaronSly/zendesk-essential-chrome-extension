@@ -14,7 +14,11 @@ function save_options() {
     highPriority: high,
     urgentPriority: urgent,
     customCss: customCss,
-    customCssUrl: customCssUrl
+    customCssUrl: customCssUrl,
+    talkTitle: 'TALK TITLE FROM OPTIONS.JS',
+    talkMessage: 'TALK Message FROM OPTIONS.JS',
+    chatTitle: 'chat TITLE FROM OPTIONS.JS',
+    chatMessage: 'CHAT MESSAGE FROM OPTIONS.JS'
 
   }, function() {
     // Update status to let user know options were saved.

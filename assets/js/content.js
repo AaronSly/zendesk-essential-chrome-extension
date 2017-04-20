@@ -1,3 +1,12 @@
+// Get locally stored options and push to array
+// can this be changed to associative array??
+var storedSettings=[];
+	chrome.storage.local.get(null , function(items){
+		for (var prop in items)	{
+			storedSettings.push(items[prop]);
+		}	
+	});
+
 // Hide custom field based on group name
  
 /************************************
@@ -120,14 +129,15 @@ function notify(id, status, title, message){
 			});
 	};
 
-var onlinechecks = function() {
+var onlinechecks = function() {	
 	// Talk Checks
 	if($("#voice-control").hasClass("off") === true) {
-		notify('id1','offline','TALK TITLE IN FUNCTION', 'TALK MESSAGE IN FUNCTION');		
+		notify('id1','offline',storedSettings[10], storedSettings[9]);		
 	}
-
 	// Chat checks
-	notify('id2','offline','TALK TITLE IN FUNCTION 2', 'TALK MESSAGE IN FUNCTION 2');
+	if ($("img[src*='offline']").length > 0 ) {
+	notify('id2','offline',storedSettings[1], storedSettings[0]);
+	}
 	// Run the checks every 30 secs
 	//setTimeout(onlinechecks, 30000);
 }
