@@ -128,7 +128,7 @@
 	}
 
 
-// Make it so...
+// Make it so....
 $(document).ready(function() {
     setTimeout(hideCustomField, 1700);
     setTimeout(highlights, 1600);

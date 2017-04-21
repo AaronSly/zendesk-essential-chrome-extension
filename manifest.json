@@ -28,7 +28,7 @@
       "name": "Zendesk Essential Highlights"
    },   
    "short_name": "Zendesk Essential Highlights",
-   "permissions": ["storage","notifications", "tabs"],
+   "permissions": ["storage","notifications","tabs"],
    "web_accessible_resources": ["/assets/audio/*.wav"],
    "version": "0.0.1"
 }
