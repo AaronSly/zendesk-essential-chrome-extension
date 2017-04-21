@@ -102,21 +102,25 @@
 	};
 
 // send message to background.js to trigger notification
-	function notify(id, status, title, message){
-		chrome.runtime.sendMessage({notifyId: id, status: status, notifyTitle: title, notifyMessage: message}, function(response) {
+	function notify(id, status, title, message, iconUrl){
+		chrome.runtime.sendMessage({notifyId: id, status: status, notifyTitle: title, notifyMessage: message, iconUrl: iconUrl }, function(response) {
 			  console.log(response.responseStatus);
 			});
-	};
+	};	
 
-	var onlinechecks = function() {	
+	var onlinechecks = function() {
+		var audioUrl = chrome.runtime.getURL('/assets/audio/alert1.wav');
+		$("body").append('<audio id="alert1" src="'+audioUrl+'" type="audio/mpeg"></audio>');
 		console.log(storedSettings); // remove in build	
 		// Talk Checks
 		if($("#voice-control").hasClass("off") === true) {
-			notify('talk','offline',storedSettings.talkTitle, storedSettings.talkMessage);		
+			notify('talk','offline',storedSettings.talkTitle, storedSettings.talkMessage, "../assets/img/phone-icon.png");
+			document.getElementById('alert1').play();				
 		}
 		// Chat checks
 		if ($("img[src*='offline']").length > 0 ) {
-		notify('chat','offline',storedSettings.chatTitle, storedSettings.chatMessage);
+		notify('chat','offline',storedSettings.chatTitle, storedSettings.chatMessage, "../assets/img/chat-icon.png");
+			document.getElementById('alert1').play();	
 		}
 		// Run the checks every x secs
 		//setTimeout(onlinechecks, storedSettings.offlineAlertInt);

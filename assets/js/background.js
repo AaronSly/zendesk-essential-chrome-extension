@@ -5,9 +5,10 @@ chrome.runtime.onMessage.addListener(function(notification,sender,sendResponse){
 		  type: "basic",
 		  title: notification.notifyTitle,
 		  message: notification.notifyMessage,
-		  iconUrl: "../assets/img/icon.png",
+		  iconUrl: notification.iconUrl,
 		  requireInteraction: true
 		};
-		chrome.notifications.create(notification.notifyId, opt);	
+		chrome.notifications.create(notification.notifyId, opt);
+
 });
 
