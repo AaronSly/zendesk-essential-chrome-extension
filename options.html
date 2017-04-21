@@ -52,6 +52,55 @@
 	    </div>
 	</div>
 
+	<div class="notifications section-wrap">
+		<h2>Notifications</h2>
+		<table>
+			<tbody>
+				<tr>
+					<td>Enable Offline Notifications:</td>
+					<td class="cbox"><input type="checkbox" id="offlineAlerts"></td>
+				</tr>
+				<tr><!-- add check to make sure input is a number -->
+					<td>Offline Notification Interval.</td>
+					<td class="cbox">						
+						<select id="offlineAlertInt">
+						  <option value="10000">10 Seconds</option>
+						  <option value="30000">30 Seconds</option>
+						  <option value="60000">1 Minute</option>
+						  <option value="120000">2 Minutes</option>
+						  <option value="300000">5 Minutes</option>
+						  <option value="600000">10 Minutes</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td> Enable New Ticket Alerts</td>
+					<td class="cbox"><input type="checkbox" id="newTicketAlerts"></td>
+				</tr>				
+			</tbody>
+		</table>
+	</div>
+
+	<div class="offline-messages section-wrap">
+		<h2>Notification Messages</h2>
+		 <div class="text-input">
+	    	<p>Chat offline popup title.</p>
+	    	<input type="text" id="chatTitle" style="width:100%;"> 	
+	    </div>
+	    <div class="text-input">
+	    	<p>Chat offline popup message.</p>
+	    	<input type="text" id="chatMessage" style="width:100%;">
+	    </div>
+	    <div class="text-input">
+	    	<p>Talk offline popup title.</p>
+	    	<input type="text" id="talkTitle" style="width:100%;"> 	
+	    </div>
+	    <div class="text-input">
+	    	<p>Talk offline popup message.</p>
+	    	<input type="text" id="talkMessage" style="width:100%;">
+	    </div>
+	</div>
+
 	<div class="submit-section">		
 		<button id="save">Save</button>
 		<div id="status"></div>
