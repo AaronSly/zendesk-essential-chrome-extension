@@ -4,14 +4,17 @@
 		<title>Zendesk Essential Extension Options</title>
 		<script src="/assets/js/jquery-3.2.1.min.js"></script>
 		<style>
-			html {min-width: 500px;}
+			html {min-width: 720px;}
 			textarea {width:100%;}
 			table {margin:10px 0;}
-			.custom-css-wrap p, .custom-css-link p {margin-bottom:0px;}
+			h2 {text-decoration: underline;}
+			.text-input p {margin-bottom:0px; font-size:14px;}
+			.text-input p span {color:lightgray; font-size:10px;}
+			.text-input:last-of-type {margin-bottom:14px;}
 			.cbox {padding-left:10px;}			
 			.section-wrap {border-bottom: solid lightgray 1px;padding-bottom: 5px;}
 			.submit-section {margin-top:5px;}
-			#status {text-align:center; font-size:15px;}
+			#status {text-align:center; font-size:15px; display: inline-block; margin-left:10px;}
 		</style>	
 	</head>
 	<body>
@@ -42,11 +45,11 @@
 
 	<div class="custom-css-wrap section-wrap">
 		<h2>Custom Styles</h2>		  
-	    <div class="custom-css-ta">
+	    <div class="text-input">
 	    	<p>Add your custom CSS styles here.</p>
 	    	<textarea id="cssInput" rows="4"></textarea>    	
 	    </div>
-	    <div class="custom-css-link">
+	    <div class="text-input">
 	    	<p>Or add a link to a custom CSS stylesheet here.</p>
 	    	<input type="text" id="cssUrlInput" style="width:100%;">
 	    </div>
@@ -84,20 +87,20 @@
 	<div class="offline-messages section-wrap">
 		<h2>Notification Messages</h2>
 		 <div class="text-input">
-	    	<p>Chat offline popup title.</p>
-	    	<input type="text" id="chatTitle" style="width:100%;"> 	
+	    	<p>Chat Notification Title <span>(Max 60 characters)</span></p>
+	    	<input type="text" id="chatTitle" style="width:100%;" maxLength="60"> 	
 	    </div>
 	    <div class="text-input">
-	    	<p>Chat offline popup message.</p>
-	    	<input type="text" id="chatMessage" style="width:100%;">
+	    	<p>Chat Notification Message <span>(Max 100 characters)</span></p>
+	    	<input type="text" id="chatMessage" style="width:100%;" maxLength="100">
 	    </div>
 	    <div class="text-input">
-	    	<p>Talk offline popup title.</p>
-	    	<input type="text" id="talkTitle" style="width:100%;"> 	
+	    	<p>Talk Notification Title <span>(Max 60 characters)</span></p>
+	    	<input type="text" id="talkTitle" style="width:100%;" maxLength="60"> 	
 	    </div>
 	    <div class="text-input">
-	    	<p>Talk offline popup message.</p>
-	    	<input type="text" id="talkMessage" style="width:100%;">
+	    	<p>Talk Notification Message <span>(Max 100 characters)</span></p>
+	    	<input type="text" id="talkMessage" style="width:100%;" maxLength="100">
 	    </div>
 	</div>
 
