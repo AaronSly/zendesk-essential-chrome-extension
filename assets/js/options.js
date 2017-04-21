@@ -1,23 +1,12 @@
 // Saves options to chrome.storage
 function save_options() { 
-  var low = document.getElementById('low').checked;
-  var normal = document.getElementById('normal').checked;
-  var high = document.getElementById('high').checked;
-  var urgent = document.getElementById('urgent').checked;
-  var customCss = document.getElementById('cssInput').value;
-  var customCssUrl = document.getElementById('cssUrlInput').value;
-  //var offlineAlerts = document.getElementById('offlineAlerts').checked;
-  //var offlineAlertInt = document.getElementById('offlineAlertInt').value;
-  //var offlineAlerts = document.getElementById('offlineAlerts').checked;
-
-
   chrome.storage.local.set({    
-    lowPriority: low,
-    normalPriority: normal,
-    highPriority: high,
-    urgentPriority: urgent,
-    customCss: customCss,
-    customCssUrl: customCssUrl,
+    lowPriority: document.getElementById('low').checked,
+    normalPriority: document.getElementById('normal').checked,
+    highPriority: document.getElementById('high').checked,
+    urgentPriority: document.getElementById('urgent').checked,
+    customCss: document.getElementById('cssInput').value,
+    customCssUrl: document.getElementById('cssUrlInput').value,
     talkTitle: document.getElementById('talkTitle').value,
     talkMessage: document.getElementById('talkMessage').value,
     chatTitle: document.getElementById('chatTitle').value,
@@ -25,8 +14,6 @@ function save_options() {
     offlineAlerts: document.getElementById('offlineAlerts').checked,
     offlineAlertInt: document.getElementById('offlineAlertInt').value,
     newTicketAlerts: document.getElementById('newTicketAlerts').checked
-
-
   }, function() {
     // Update status to let user know options were saved.
     var status = document.getElementById('status');

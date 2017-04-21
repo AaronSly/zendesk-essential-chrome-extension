@@ -9,7 +9,6 @@
 * TO ADD:
 	*option to select what fields show and hide per ticket group - options.html
 */
-
 	var hideCustomField = function(){
 
 		var openTickSidebars = $('#main_panes .ember-view.workspace .ticket .ticket-sidebar');
@@ -72,48 +71,35 @@
 	};
 
 // Check local data options and call addStatusClass() as needed.
-	var highlights = function() { 	
-	 	chrome.storage.local.get('lowPriority', function (data) {
-			if (data.lowPriority == true) {
-				addStatusClass('Low')
-			}
-		});
-		chrome.storage.local.get('normalPriority', function (data) {
-			if (data.normalPriority == true) {
-				addStatusClass('Normal')
-			}
-		});
-		chrome.storage.local.get('highPriority', function (data) {
-			if (data.highPriority == true) {
-				addStatusClass('High')
-			}
-		});
-		chrome.storage.local.get('urgentPriority', function (data) {
-			if (data.urgentPriority == true) {
-				addStatusClass('Urgent')
-			}
-		});
+	var highlights = function() {
+		if (storedSettings.lowPriority == true) {
+			addStatusClass('Low')
+		};
+		if (storedSettings.normalPriority == true) {
+			addStatusClass('Normal')
+		};
+		if (storedSettings.highPriority == true) {
+			addStatusClass('High')
+		};
+		if (storedSettings.urgentPriority == true) {
+			addStatusClass('Urgent')
+		};
 	 }
 
  // Inject custom CSS styles into the page
-function customCss() {
-	// Check and create custom CSS from textarea
-	chrome.storage.local.get('customCss', function (css){		
-		if (css.customCss !== '') {			
-			var StrippedString = css.customCss.replace(/(<([^>]+)>)/ig,"");
+	function customCss() {
+		// Check and create custom CSS from textarea
+		if (storedSettings.customCss !== '') {			
+			var StrippedString = storedSettings.customCss.replace(/(<([^>]+)>)/ig,"");
 			var addCss = '<style type="text/css">' + StrippedString + '</style>';
 			$("head").append(addCss);
 		};
-	});
-
-	// Check and create custom CSS from textarea
-	chrome.storage.local.get('customCssUrl', function (cssUrl){		
-		if (cssUrl.customCssUrl !== '') {
-			var addCssUrl = '<link rel="stylesheet "type="text/css" href="'+cssUrl.customCssUrl+'">';
+		// Check and add custom CSS from url	
+		if (storedSettings.customCssUrl !== '') {
+			var addCssUrl = '<link rel="stylesheet "type="text/css" href="'+storedSettings.customCssUrl+'">';
 			$("head").append(addCssUrl);
 		};
-	});
-};
+	};
 
 // send message to background.js to trigger notification
 	function notify(id, status, title, message){
@@ -123,14 +109,14 @@ function customCss() {
 	};
 
 	var onlinechecks = function() {	
-		console.log(storedSettings);	
+		console.log(storedSettings); // remove in build	
 		// Talk Checks
 		if($("#voice-control").hasClass("off") === true) {
-			notify('id1','offline',storedSettings.talkTitle, storedSettings.talkMessage);		
+			notify('talk','offline',storedSettings.talkTitle, storedSettings.talkMessage);		
 		}
 		// Chat checks
 		if ($("img[src*='offline']").length > 0 ) {
-		notify('id2','offline',storedSettings.chatTitle, storedSettings.chatMessage);
+		notify('chat','offline',storedSettings.chatTitle, storedSettings.chatMessage);
 		}
 		// Run the checks every x secs
 		//setTimeout(onlinechecks, storedSettings.offlineAlertInt);
