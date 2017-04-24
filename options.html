@@ -75,6 +75,10 @@
 						  <option value="600000">10 Minutes</option>
 						</select>
 					</td>
+				</tr>
+				<tr id="offlineAudioAlertsWrap" style="display: none;">
+					<td>Enable Audio Notifications For Offline Notifications</td>
+					<td class="cbox"><input type="checkbox" id="offlineAudioAlerts"></td>
 				</tr>				
 			</tbody>
 		</table>
@@ -107,6 +111,22 @@
 					<td>Enable New Ticket Alerts:</td>
 					<td class="cbox"><input type="checkbox" id="newTicketAlerts"></td>
 				</tr>
+				<tr id="newTickIntWrapper" style="display: none;"><!-- add check to make sure input is a number -->
+					<td>New Ticket Notification Interval.</td>
+					<td class="cbox">						
+						<select id="newTickAlertInt">
+						  <option value="60000">1 Minute</option>
+						  <option value="300000">5 Minutes</option>
+						  <option value="600000">10 Minutes</option>
+						  <option value="900000">15 Minutes</option>
+						  <option value="1800000">30 Minutes</option>
+						</select>
+					</td>
+				</tr>
+				<tr id="newTickAudioAlertsWrap" style="display:none;">
+					<td>Enable Audio Notifications For New Tickets</td>
+					<td class="cbox"><input type="checkbox" id="newTickAudioAlerts"></td>
+				</tr>
 			</tbody>
 		</table>
 
@@ -116,15 +136,7 @@
 					<tr>
 						<td>Subdomain:</td>
 						<td><input type="text" id="subdomain" style="width:100%;"></td>
-					</tr>
-					<tr>
-						<td>Username:</td>
-						<td><input type="text" id="userName" style="width:100%;"></td>
-					</tr>
-					<tr>
-						<td>Password:</td>
-						<td><input type="password" id="password" style="width:100%;"></td>
-					</tr>			
+					</tr>								
 				</tbody>
 			</table>
 		</div>

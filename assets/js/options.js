@@ -3,27 +3,37 @@
     var offlineAlerts = $('#offlineAlerts'),
         offlineMessages = $('#offlineMessages'),
         offlineInt = $('#offline-int-wrapper');
+        offlineAudio = $('#offlineAudioAlertsWrap');
 
     if(offlineAlerts.prop("checked") == true) {
         offlineMessages.css({"display":"block"});
         offlineInt.css({"display":"table-row"});
+        offlineAudio.css({"display":"table-row"});
+
     }
     else{
          offlineMessages.css({"display":"none"});
         offlineInt.css({"display":"none"});
+        offlineAudio.css({"display":"none"});
     }
   };
   $('#offlineAlerts').change(displayOfflineNotifications);
 
 // Show / Hide Login input fields for new ticket notifications
-  var ticketAlertsCheck = $('#newTicketAlerts');
-  var apiCreds = $('#newTickCred');
+  var $ticketAlertsCheck = $('#newTicketAlerts');
+  var $apiCreds = $('#newTickCred');
+  var $newTickaudio = $('#newTickAudioAlertsWrap');
+  var $newTickInt = $('#newTickIntWrapper');
   var displayApiCreds = function() {
-    if(ticketAlertsCheck.prop("checked") == true) {
-        apiCreds.css({"display":"block"});
+    if($ticketAlertsCheck.prop("checked") == true) {
+        $apiCreds.css({"display":"block"});
+        $newTickaudio.css({"display":"table-row"});
+        $newTickInt.css({"display":"table-row"});
     }
     else{
-        apiCreds.css({"display":"none"})
+        $apiCreds.css({"display":"none"});
+        $newTickaudio.css({"display":"none"});
+        $newTickInt.css({"display":"none"});
     }
   };
   $('#newTicketAlerts').change(displayApiCreds);
@@ -43,10 +53,12 @@
       chatMessage: document.getElementById('chatMessage').value,
       offlineAlerts: document.getElementById('offlineAlerts').checked,
       offlineAlertInt: document.getElementById('offlineAlertInt').value,
+      offlineAudioAlerts: document.getElementById('offlineAudioAlerts').checked,
       newTicketAlerts: document.getElementById('newTicketAlerts').checked,
       subdomain: document.getElementById('subdomain').value,
-      userName: document.getElementById('userName').value,
-      password: document.getElementById('password').value
+      newTickAudioAlerts: document.getElementById('newTickAudioAlerts').checked,
+      newTickAlertInt: document.getElementById('newTickAlertInt').value
+      
 
     }, function() {
       // Update status to let user know options were saved.
@@ -76,8 +88,9 @@
       offlineAlertInt: 30000,
       newTicketAlerts: true,
       subdomain: '',
-      userName: '',
-      password: ''
+      newTickAudioAlerts: true,
+      newTickAlertInt: 300000,
+      offlineAudioAlerts: true
     }, function(items) {   
       document.getElementById('low').checked = items.lowPriority;
       document.getElementById('normal').checked = items.normalPriority;
@@ -93,8 +106,9 @@
       document.getElementById('offlineAlertInt').value = items.offlineAlertInt;
       document.getElementById('newTicketAlerts').checked = items.newTicketAlerts;
       document.getElementById('subdomain').value = items.subdomain;
-      document.getElementById('userName').value = items.userName;
-      document.getElementById('password').value = items.password;
+      document.getElementById('newTickAudioAlerts').checked = items.newTickAudioAlerts;
+      document.getElementById('newTickAlertInt').value = items.newTickAlertInt;
+      document.getElementById('offlineAudioAlerts').checked = items.offlineAudioAlerts;
     });
   }
 

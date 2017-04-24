@@ -3,8 +3,9 @@
 	chrome.storage.local.get(null , function(items){		
 			storedSettings = items;
 		});
-// Hide custom field based on group name 
-/************************************
+/*************************************
+ Hide custom field based on group name 
+/*************************************
 * TO ADD:
 	*option to select what fields show and hide per ticket group - options.html
 */
@@ -50,6 +51,9 @@
 		});
 	};
 
+/**************************************
+* Add Custom CSS from Extension Options
+***************************************/
 // Add Status class to ticket row for styling
 	function addStatusClass(priority) {
 	    if (0 < window.location.href.indexOf('agent/filters')) {
@@ -68,7 +72,6 @@
 	        })
 	    }
 	};
-
 // Check local data options and call addStatusClass() as needed.
 	var highlights = function() {
 		if (storedSettings.lowPriority == true) {
@@ -83,8 +86,7 @@
 		if (storedSettings.urgentPriority == true) {
 			addStatusClass('Urgent')
 		};
-	 }
-
+	 };
  // Inject custom CSS styles into the page
 	function customCss() {
 		// Check and create custom CSS from textarea
@@ -100,54 +102,70 @@
 		};
 	};
 
+/***************************
+* Desktop Notifications
+****************************/
 // send message to background.js to trigger notification
 	function notify(id, status, title, message, iconUrl){
 		chrome.runtime.sendMessage({notifyId: id, status: status, notifyTitle: title, notifyMessage: message, iconUrl: iconUrl }, function(response) {
 			  console.log(response.responseStatus);			  
 			});
 	};
-
-	var onlinechecks = function() {		
-		// Add audio element to page to be triggered by notifications
-		var audioUrl = chrome.runtime.getURL('/assets/audio/alert1.wav');
-		$("body").append('<audio id="alert1" src="'+audioUrl+'" type="audio/mpeg"></audio>');		
-
+// Checks to make sure agents are online
+	var onlinechecks = function() {
 		// Talk Checks
 		if($("#voice-control").hasClass("off") === true) {
 			notify('talk','offline',storedSettings.talkTitle, storedSettings.talkMessage, "../assets/img/phone-icon.png");
-			document.getElementById('alert1').play();			
+			if(storedSettings.offlineAudioAlerts === true){document.getElementById('alert1').play()};			
 		}
 		// Chat checks
 		if ($("img[src*='offline']").length > 0 ) {
 		notify('chat','offline',storedSettings.chatTitle, storedSettings.chatMessage, "../assets/img/chat-icon.png");
-			document.getElementById('alert1').play();	
+			if(storedSettings.offlineAudioAlerts === true){document.getElementById('alert1').play()};	
 		}
 		// Run the checks every x secs
 		//setTimeout(onlinechecks, storedSettings.offlineAlertInt);
 	};
-
+// Check for tickets with a staus of new and alert
 	var newTicketChecks = function() {
-		// make get request to zendesk
-			// pull username and password from local settings
-			// make request
-			// save result to var
-
-		// Search through results for tickets created in the last minute
-
-		// construct and trigger desktop notification
+		var searchUrl = 'https://'+storedSettings.subdomain+'.zendesk.com/api/v2/search.json?query=status:new';
+		$.get(searchUrl, function(data){
+			var newTickets = data.results;					
+			if (data.count === 0) {
+				return;
+			}
+			else if (data.count === 1) {					
+				notify('1newticket','','You have a new ticket!', 'There is a new ticket to be processed.', "../assets/img/icon.png");
+				if(storedSettings.newTickAudioAlerts === true){document.getElementById('alert1').play()};
+			}
+			else {
+				var newTickStr = 'There are new tickets to be processed.';
+				notify('newtickets','','YOU HAVE NEW TICKETS!',newTickStr, "../assets/img/icon.png");
+				if(storedSettings.newTickAudioAlerts === true){document.getElementById('alert1').play()};
+			}
+		},"json");
+		// Run the checks every x secs
+		//setTimeout(newTicketChecks, storedSettings.newTickAlertInt);
 	};
 
-
-// Make it so....
+/***************
+* Make it so....
+****************/
 $(document).ready(function() {
+	// Add audio element to page to be triggered by notifications
+		var audioUrl = chrome.runtime.getURL('/assets/audio/alert1.wav');
+		$("body").append('<audio id="alert1" src="'+audioUrl+'" type="audio/mpeg"></audio>');
+
     setTimeout(hideCustomField, 1700);
     setTimeout(highlights, 1600);
     customCss();
+    if(storedSettings.newTicketAlerts === true){setTimeout(newTicketChecks,7000)};
     if (storedSettings.offlineAlerts === true){setTimeout(onlinechecks, 5000);}
 }), $('*').click(function() {
     setTimeout(hideCustomField, 1300);
     setTimeout(highlights, 1300);
-    setTimeout(onlinechecks, 2000);// for debugging only remove in build.
+    //setTimeout(onlinechecks, 2000);// for debugging only remove in build.
+    
 }), $(window).focus(function() {
     setTimeout(hideCustomField, 1500);
     setTimeout(highlights, 1500);
