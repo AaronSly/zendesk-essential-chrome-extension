@@ -56,14 +56,14 @@
 	</div>
 
 	<div class="notifications section-wrap">
-		<h2>Notifications</h2>
+		<h2>Offline Notifications</h2>
 		<table>
 			<tbody>
 				<tr>
 					<td>Enable Offline Notifications:</td>
 					<td class="cbox"><input type="checkbox" id="offlineAlerts"></td>
 				</tr>
-				<tr><!-- add check to make sure input is a number -->
+				<tr id="offline-int-wrapper" style="display: none;"><!-- add check to make sure input is a number -->
 					<td>Offline Notification Interval.</td>
 					<td class="cbox">						
 						<select id="offlineAlertInt">
@@ -75,33 +75,59 @@
 						  <option value="600000">10 Minutes</option>
 						</select>
 					</td>
-				</tr>
-				<tr>
-					<td> Enable New Ticket Alerts</td>
-					<td class="cbox"><input type="checkbox" id="newTicketAlerts"></td>
 				</tr>				
 			</tbody>
 		</table>
+		<div id="offlineMessages" style="display: none;">
+			<h2> Offline Notification Messages</h2>
+			<div class="text-input">
+		    	<p>Chat Notification Title <span>(Max 60 characters)</span></p>
+		    	<input type="text" id="chatTitle" style="width:100%;" maxLength="60"> 	
+		    </div>
+		    <div class="text-input">
+		    	<p>Chat Notification Message <span>(Max 100 characters)</span></p>
+		    	<input type="text" id="chatMessage" style="width:100%;" maxLength="100">
+		    </div>
+		    <div class="text-input">
+		    	<p>Talk Notification Title <span>(Max 60 characters)</span></p>
+		    	<input type="text" id="talkTitle" style="width:100%;" maxLength="60"> 	
+		    </div>
+		    <div class="text-input">
+		    	<p>Talk Notification Message <span>(Max 100 characters)</span></p>
+		    	<input type="text" id="talkMessage" style="width:100%;" maxLength="100">
+		    </div>
+	    </div>
 	</div>
 
-	<div class="offline-messages section-wrap">
-		<h2>Notification Messages</h2>
-		 <div class="text-input">
-	    	<p>Chat Notification Title <span>(Max 60 characters)</span></p>
-	    	<input type="text" id="chatTitle" style="width:100%;" maxLength="60"> 	
-	    </div>
-	    <div class="text-input">
-	    	<p>Chat Notification Message <span>(Max 100 characters)</span></p>
-	    	<input type="text" id="chatMessage" style="width:100%;" maxLength="100">
-	    </div>
-	    <div class="text-input">
-	    	<p>Talk Notification Title <span>(Max 60 characters)</span></p>
-	    	<input type="text" id="talkTitle" style="width:100%;" maxLength="60"> 	
-	    </div>
-	    <div class="text-input">
-	    	<p>Talk Notification Message <span>(Max 100 characters)</span></p>
-	    	<input type="text" id="talkMessage" style="width:100%;" maxLength="100">
-	    </div>
+	<div class="notifications section-wrap">
+		<h2>New Ticket Notifications</h2>
+		<table>
+			<tbody>
+				<tr>
+					<td>Enable New Ticket Alerts:</td>
+					<td class="cbox"><input type="checkbox" id="newTicketAlerts"></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div id="newTickCred" style="display: none;">
+			<table>
+				<tbody>
+					<tr>
+						<td>Subdomain:</td>
+						<td><input type="text" id="subdomain" style="width:100%;"></td>
+					</tr>
+					<tr>
+						<td>Username:</td>
+						<td><input type="text" id="userName" style="width:100%;"></td>
+					</tr>
+					<tr>
+						<td>Password:</td>
+						<td><input type="password" id="password" style="width:100%;"></td>
+					</tr>			
+				</tbody>
+			</table>
+		</div>
 	</div>
 
 	<div class="submit-section">		

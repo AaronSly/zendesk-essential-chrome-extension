@@ -9,9 +9,9 @@ chrome.runtime.onMessage.addListener(function(notification,sender,sendResponse){
 		  iconUrl: notification.iconUrl,
 		  requireInteraction: true
 		};
-
 		chrome.notifications.create(notification.notifyId, opt);	
-		//console.log(sender);	
+
+
 		// Notification on click activates and highlights chrome tab
 		chrome.notifications.onClicked.addListener(function(id) {
 		  chrome.tabs.update(sender.tab.id,{"active":true,"highlighted":true},function (tab){

@@ -3,7 +3,6 @@
 	chrome.storage.local.get(null , function(items){		
 			storedSettings = items;
 		});
-
 // Hide custom field based on group name 
 /************************************
 * TO ADD:
@@ -106,9 +105,9 @@
 		chrome.runtime.sendMessage({notifyId: id, status: status, notifyTitle: title, notifyMessage: message, iconUrl: iconUrl }, function(response) {
 			  console.log(response.responseStatus);			  
 			});
-	};	
+	};
 
-	var onlinechecks = function() {
+	var onlinechecks = function() {		
 		// Add audio element to page to be triggered by notifications
 		var audioUrl = chrome.runtime.getURL('/assets/audio/alert1.wav');
 		$("body").append('<audio id="alert1" src="'+audioUrl+'" type="audio/mpeg"></audio>');		
@@ -125,7 +124,18 @@
 		}
 		// Run the checks every x secs
 		//setTimeout(onlinechecks, storedSettings.offlineAlertInt);
-	}
+	};
+
+	var newTicketChecks = function() {
+		// make get request to zendesk
+			// pull username and password from local settings
+			// make request
+			// save result to var
+
+		// Search through results for tickets created in the last minute
+
+		// construct and trigger desktop notification
+	};
 
 
 // Make it so....
