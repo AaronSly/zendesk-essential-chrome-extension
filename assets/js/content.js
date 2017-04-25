@@ -189,6 +189,6 @@ $(document).ready(function() {
     setTimeout(hideCustomField, 1300);
     setTimeout(highlights, 1300);    
 }), $(window).focus(function() {
-    setTimeout(hideCustomField, 1500);
+    setTimeout(hideCustomField, 1700);
     setTimeout(highlights, 1500);
 });
