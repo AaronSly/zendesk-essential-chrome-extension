@@ -14,6 +14,11 @@
    },
    "manifest_version": 2,
    "name": "Zendesk Essential Highlights",
+   "options_ui": {
+      "page" : "options.html",
+      "chrome_style" : true
+   },
+   "background": { "scripts": ["assets/js/jquery-3.2.1.min.js","assets/js/background.js"] },
    "page_action": {
       "default_icon": {
          "16": "assets/img/icon.png",
@@ -23,6 +28,7 @@
       "name": "Zendesk Essential Highlights"
    },   
    "short_name": "Zendesk Essential Highlights",
-
+   "permissions": ["storage","notifications","tabs"],
+   "web_accessible_resources": ["/assets/audio/*.wav"],
    "version": "0.0.1"
 }

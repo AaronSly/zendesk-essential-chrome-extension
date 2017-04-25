@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Zendesk Essential Extension Options</title>
+		<script src="/assets/js/jquery-3.2.1.min.js"></script>
+		<style>
+			html {min-width: 720px;}
+			textarea {width:100%;}
+			table {margin:10px 0;}
+			h2 {text-decoration: underline;}
+			.text-input p {margin-bottom:0px; font-size:14px;}
+			.text-input p span {color:lightgray; font-size:10px;}
+			.text-input:last-of-type {margin-bottom:14px;}
+			.cbox {padding-left:10px;}			
+			.section-wrap {border-bottom: solid lightgray 1px;padding-bottom: 5px;}
+			.submit-section {margin-top:5px;}
+			#status {text-align:center; font-size:15px; display: inline-block; margin-left:10px;}
+			#restore {float:right;}
+		</style>	
+	</head>
+	<body>
+	
+	<div class="highlight-wrapper section-wrap">
+		<h2>Enable Ticket Status Highlighting by Priority.</h2>
+		<table>
+			<tbody>
+				<tr>
+					<td>Low Priority:</td>
+					<td class="cbox"><input type="checkbox" id="low"></td>
+				</tr>
+				<tr>
+					<td>Normal Priority:</td>
+					<td class="cbox"><input type="checkbox" id="normal"></td>
+				</tr>
+				<tr>
+					<td>High Priority:</td>
+					<td class="cbox"><input type="checkbox" id="high"></td>
+				</tr>
+				<tr>
+					<td>Urgent Priority:</td>
+					<td class="cbox"><input type="checkbox" id="urgent"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="custom-css-wrap section-wrap">
+		<h2>Custom Styles</h2>		  
+	    <div class="text-input">
+	    	<p>Add your custom CSS styles here.</p>
+	    	<textarea id="cssInput" rows="4"></textarea>    	
+	    </div>
+	    <div class="text-input">
+	    	<p>Or add a link to a custom CSS stylesheet here.</p>
+	    	<input type="text" id="cssUrlInput" style="width:100%;">
+	    </div>
+	</div>
+
+	<div class="notifications section-wrap">
+		<h2>Offline Notifications</h2>
+		<table>
+			<tbody>
+				<tr>
+					<td>Enable Offline Notifications:</td>
+					<td class="cbox"><input type="checkbox" id="offlineAlerts"></td>
+				</tr>
+				<tr id="offline-int-wrapper" style="display: none;"><!-- add check to make sure input is a number -->
+					<td>Offline Notification Interval.</td>
+					<td class="cbox">						
+						<select id="offlineAlertInt">
+						  <option value="10000">10 Seconds</option>
+						  <option value="30000">30 Seconds</option>
+						  <option value="60000" selected>1 Minute</option>
+						  <option value="120000">2 Minutes</option>
+						  <option value="300000">5 Minutes</option>
+						  <option value="600000">10 Minutes</option>
+						</select>
+					</td>
+				</tr>
+				<tr id="offlineAudioAlertsWrap" style="display: none;">
+					<td>Enable Audio Notifications For Offline Notifications</td>
+					<td class="cbox"><input type="checkbox" id="offlineAudioAlerts"></td>
+				</tr>				
+			</tbody>
+		</table>
+		<div id="offlineMessages" style="display: none;">
+			<h2> Offline Notification Messages</h2>
+			<div class="text-input">
+		    	<p>Chat Notification Title <span>(Max 60 characters)</span></p>
+		    	<input type="text" id="chatTitle" style="width:100%;" maxLength="60" placeholder="Add a custom Chat Notification Title here"> 	
+		    </div>
+		    <div class="text-input">
+		    	<p>Chat Notification Message <span>(Max 100 characters)</span></p>
+		    	<input type="text" id="chatMessage" style="width:100%;" maxLength="100" placeholder="Add a custom Chat Notification Message here">
+		    </div>
+		    <div class="text-input">
+		    	<p>Talk Notification Title <span>(Max 60 characters)</span></p>
+		    	<input type="text" id="talkTitle" style="width:100%;" maxLength="60" placeholder="Add a custom Talk Notification Title here"> 	
+		    </div>
+		    <div class="text-input">
+		    	<p>Talk Notification Message <span>(Max 100 characters)</span></p>
+		    	<input type="text" id="talkMessage" style="width:100%;" maxLength="100" placeholder="Add a custom Talk Notification Message here">
+		    </div>
+	    </div>
+	</div>
+
+	<div class="notifications section-wrap">
+		<h2>New Ticket Notifications</h2>
+		<table>
+			<tbody>
+				<tr>
+					<td>Enable New Ticket Alerts:</td>
+					<td class="cbox"><input type="checkbox" id="newTicketAlerts"></td>
+				</tr>
+				<tr id="newTickIntWrapper" style="display: none;"><!-- add check to make sure input is a number -->
+					<td>New Ticket Notification Interval.</td>
+					<td class="cbox">						
+						<select id="newTickAlertInt">
+						  <option value="60000">1 Minute</option>
+						  <option value="300000" selected>5 Minutes</option>
+						  <option value="600000">10 Minutes</option>
+						  <option value="900000">15 Minutes</option>
+						  <option value="1800000">30 Minutes</option>
+						</select>
+					</td>
+				</tr>
+				<tr id="newTickAudioAlertsWrap" style="display:none;">
+					<td>Enable Audio Notifications For New Tickets</td>
+					<td class="cbox"><input type="checkbox" id="newTickAudioAlerts"></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div id="newTickCred" style="display: none;">
+			<table>
+				<tbody>
+					<tr>
+						<td>Subdomain:</td>
+						<td><input type="text" id="subdomain" style="width:100%;"></td>
+						<td>This is required to enable new ticket alerts.</td>
+					</tr>								
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="submit-section">		
+		<button id="save">Save</button>		
+		<div id="status"></div>
+	</div>
+
+	<script src="assets/js/options.js"></script>
+	</body>
+</html>
