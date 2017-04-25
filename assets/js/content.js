@@ -115,16 +115,40 @@
 	var onlinechecks = function() {
 		// Talk Checks
 		if($("#voice-control").hasClass("off") === true) {
-			notify('talk','offline',storedSettings.talkTitle, storedSettings.talkMessage, "../assets/img/phone-icon.png");
+			if (storedSettings.talkTitle ==='') {
+				var talkTitleOut = 'TALK IS CURRENTLY SET TO OFFLINE!';
+			} 
+			else {
+				talkTitleOut = storedSettings.talkTitle;
+			};
+			if (storedSettings.talkMessage ==='') {
+				var talkMessageOut = 'You are currently set as offline for Zendesk Talk and will not receive any calls.';
+			} 
+			else {
+				talkMessageOut = storedSettings.talkMessage;
+			};
+			notify('talk','offline',talkTitleOut, talkMessageOut, "../assets/img/phone-icon.png");
 			if(storedSettings.offlineAudioAlerts === true){document.getElementById('alert1').play()};			
 		}
 		// Chat checks
 		if ($("img[src*='offline']").length > 0 ) {
-		notify('chat','offline',storedSettings.chatTitle, storedSettings.chatMessage, "../assets/img/chat-icon.png");
+			if (storedSettings.chatTitle ==='') {
+				var chatTitleOut = 'CHAT IS CURRENTLY SET TO OFFLINE!';
+			} 
+			else {
+				chatTitleOut = storedSettings.chatTitle;
+			};
+			if (storedSettings.chatMessage ==='') {
+				var chatMessageOut = 'You are currently set as offline for Zendesk Chat and will not receive any incoming chats.';
+			} 
+			else {
+				chatMessageOut = storedSettings.chatMessage;
+			};
+		notify('chat','offline',chatTitleOut, chatMessageOut, "../assets/img/chat-icon.png");
 			if(storedSettings.offlineAudioAlerts === true){document.getElementById('alert1').play()};	
 		}
 		// Run the checks every x secs
-		//setTimeout(onlinechecks, storedSettings.offlineAlertInt);
+		setTimeout(onlinechecks, storedSettings.offlineAlertInt);
 	};
 // Check for tickets with a staus of new and alert
 	var newTicketChecks = function() {
@@ -145,7 +169,7 @@
 			}
 		},"json");
 		// Run the checks every x secs
-		//setTimeout(newTicketChecks, storedSettings.newTickAlertInt);
+		setTimeout(newTicketChecks, storedSettings.newTickAlertInt);
 	};
 
 /***************
@@ -163,9 +187,7 @@ $(document).ready(function() {
     if (storedSettings.offlineAlerts === true){setTimeout(onlinechecks, 5000);}
 }), $('*').click(function() {
     setTimeout(hideCustomField, 1300);
-    setTimeout(highlights, 1300);
-    //setTimeout(onlinechecks, 2000);// for debugging only remove in build.
-    
+    setTimeout(highlights, 1300);    
 }), $(window).focus(function() {
     setTimeout(hideCustomField, 1500);
     setTimeout(highlights, 1500);

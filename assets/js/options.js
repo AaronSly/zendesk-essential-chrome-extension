@@ -39,7 +39,8 @@
   $('#newTicketAlerts').change(displayApiCreds);
 
 // Saves options to chrome.storage
-  function save_options() { 
+  function save_options() {  
+    
     chrome.storage.local.set({    
       lowPriority: document.getElementById('low').checked,
       normalPriority: document.getElementById('normal').checked,
@@ -47,10 +48,10 @@
       urgentPriority: document.getElementById('urgent').checked,
       customCss: document.getElementById('cssInput').value,
       customCssUrl: document.getElementById('cssUrlInput').value,
-      talkTitle: document.getElementById('talkTitle').value,
-      talkMessage: document.getElementById('talkMessage').value,
-      chatTitle: document.getElementById('chatTitle').value,
-      chatMessage: document.getElementById('chatMessage').value,
+      talkTitle: $('#talkTitle').val(),
+      talkMessage: $('#talkMessage').val(),
+      chatTitle: $('#chatTitle').val(),
+      chatMessage: $('#chatMessage').val(),
       offlineAlerts: document.getElementById('offlineAlerts').checked,
       offlineAlertInt: document.getElementById('offlineAlertInt').value,
       offlineAudioAlerts: document.getElementById('offlineAudioAlerts').checked,
@@ -115,6 +116,9 @@
 document.addEventListener('DOMContentLoaded', restore_options);
 document.getElementById('save').addEventListener('click',
     save_options);
+$("#restore").click(function(){
+  chrome.storage.local.clear();
+});
 
 // Make it so ...
 $(document).ready(function() {

@@ -15,6 +15,7 @@
 			.section-wrap {border-bottom: solid lightgray 1px;padding-bottom: 5px;}
 			.submit-section {margin-top:5px;}
 			#status {text-align:center; font-size:15px; display: inline-block; margin-left:10px;}
+			#restore {float:right;}
 		</style>	
 	</head>
 	<body>
@@ -69,7 +70,7 @@
 						<select id="offlineAlertInt">
 						  <option value="10000">10 Seconds</option>
 						  <option value="30000">30 Seconds</option>
-						  <option value="60000">1 Minute</option>
+						  <option value="60000" selected>1 Minute</option>
 						  <option value="120000">2 Minutes</option>
 						  <option value="300000">5 Minutes</option>
 						  <option value="600000">10 Minutes</option>
@@ -86,19 +87,19 @@
 			<h2> Offline Notification Messages</h2>
 			<div class="text-input">
 		    	<p>Chat Notification Title <span>(Max 60 characters)</span></p>
-		    	<input type="text" id="chatTitle" style="width:100%;" maxLength="60"> 	
+		    	<input type="text" id="chatTitle" style="width:100%;" maxLength="60" placeholder="Add a custom Chat Notification Title here"> 	
 		    </div>
 		    <div class="text-input">
 		    	<p>Chat Notification Message <span>(Max 100 characters)</span></p>
-		    	<input type="text" id="chatMessage" style="width:100%;" maxLength="100">
+		    	<input type="text" id="chatMessage" style="width:100%;" maxLength="100" placeholder="Add a custom Chat Notification Message here">
 		    </div>
 		    <div class="text-input">
 		    	<p>Talk Notification Title <span>(Max 60 characters)</span></p>
-		    	<input type="text" id="talkTitle" style="width:100%;" maxLength="60"> 	
+		    	<input type="text" id="talkTitle" style="width:100%;" maxLength="60" placeholder="Add a custom Talk Notification Title here"> 	
 		    </div>
 		    <div class="text-input">
 		    	<p>Talk Notification Message <span>(Max 100 characters)</span></p>
-		    	<input type="text" id="talkMessage" style="width:100%;" maxLength="100">
+		    	<input type="text" id="talkMessage" style="width:100%;" maxLength="100" placeholder="Add a custom Talk Notification Message here">
 		    </div>
 	    </div>
 	</div>
@@ -116,7 +117,7 @@
 					<td class="cbox">						
 						<select id="newTickAlertInt">
 						  <option value="60000">1 Minute</option>
-						  <option value="300000">5 Minutes</option>
+						  <option value="300000" selected>5 Minutes</option>
 						  <option value="600000">10 Minutes</option>
 						  <option value="900000">15 Minutes</option>
 						  <option value="1800000">30 Minutes</option>
@@ -136,6 +137,7 @@
 					<tr>
 						<td>Subdomain:</td>
 						<td><input type="text" id="subdomain" style="width:100%;"></td>
+						<td>This is required to enable new ticket alerts.</td>
 					</tr>								
 				</tbody>
 			</table>
@@ -143,7 +145,7 @@
 	</div>
 
 	<div class="submit-section">		
-		<button id="save">Save</button>
+		<button id="save">Save</button>		
 		<div id="status"></div>
 	</div>
 
